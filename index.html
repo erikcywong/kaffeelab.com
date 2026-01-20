@@ -1,0 +1,1312 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SHINAE SEEDING | 咖啡组培技术与专利商业模式</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --x-dark: #000000;
+            --x-light: #ffffff;
+            --x-gray: #71767b;
+            --x-accent: #1d9bf0;
+            --x-hover: #0c4a6e;
+            --card-bg: #16181c;
+            --border-color: #2f3336;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+        
+        body {
+            background-color: var(--x-dark);
+            color: var(--x-light);
+            line-height: 1.5;
+            overflow-x: hidden;
+        }
+        
+        /* 页面容器 */
+        .page-container {
+            transition: transform 0.4s ease-in-out;
+        }
+        
+        .page {
+            width: 100vw;
+            min-height: 100vh;
+            padding: 80px 1rem 2rem;
+            display: none;
+        }
+        
+        .page.active {
+            display: block;
+        }
+        
+        /* 导航栏样式 */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
+            padding: 0 1rem;
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 60px;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--x-light);
+            text-decoration: none;
+            cursor: pointer;
+        }
+        
+        .logo-icon {
+            margin-right: 8px;
+            color: var(--x-accent);
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-item {
+            position: relative;
+        }
+        
+        .nav-link {
+            color: var(--x-light);
+            text-decoration: none;
+            padding: 1rem;
+            display: block;
+            transition: color 0.2s;
+            cursor: pointer;
+        }
+        
+        .nav-link:hover, .nav-link.active {
+            color: var(--x-accent);
+        }
+        
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            background-color: var(--card-bg);
+            min-width: 220px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            top: 100%;
+            left: 0;
+            z-index: 1001;
+        }
+        
+        .dropdown-menu li {
+            width: 100%;
+        }
+        
+        .dropdown-menu a {
+            padding: 0.75rem 1rem;
+            color: var(--x-light);
+            text-decoration: none;
+            display: block;
+            cursor: pointer;
+        }
+        
+        .dropdown-menu a:hover, .dropdown-menu a.active {
+            background-color: rgba(29, 155, 240, 0.1);
+            color: var(--x-accent);
+        }
+        
+        .nav-item:hover .dropdown-menu {
+            display: block;
+        }
+        
+        /* 主要内容区域 */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .hero {
+            text-align: center;
+            padding: 3rem 0;
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 2rem;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(90deg, var(--x-accent), #60a5fa);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .hero-subtitle {
+            color: var(--x-gray);
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        /* Dashboard 数据看板 */
+        .dashboard {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+        
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 1.5rem;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--x-accent);
+        }
+        
+        .card-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            color: var(--x-accent);
+        }
+        
+        .card-icon {
+            font-size: 1.5rem;
+            margin-right: 10px;
+        }
+        
+        .card-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+        
+        .data-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .data-item {
+            padding: 1rem;
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .data-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+        }
+        
+        .data-label {
+            font-size: 0.9rem;
+            color: var(--x-gray);
+        }
+        
+        .data-improvement {
+            color: #10b981;
+            font-weight: 700;
+        }
+        
+        .data-negative {
+            color: #ef4444;
+        }
+        
+        /* 对比表格 */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+        }
+        
+        .comparison-table th {
+            background-color: rgba(29, 155, 240, 0.1);
+            padding: 1rem;
+            text-align: left;
+            border: 1px solid var(--border-color);
+        }
+        
+        .comparison-table td {
+            padding: 1rem;
+            border: 1px solid var(--border-color);
+        }
+        
+        .tech-cell {
+            background-color: rgba(16, 185, 129, 0.1);
+            color: #10b981;
+            font-weight: 700;
+        }
+        
+        .traditional-cell {
+            background-color: rgba(239, 68, 68, 0.1);
+            color: #ef4444;
+        }
+        
+        /* 合作伙伴部分 */
+        .partner-section {
+            margin: 3rem 0;
+            padding: 2rem;
+            background-color: var(--card-bg);
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+        }
+        
+        .partner-logo {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .partner-logo i {
+            font-size: 2rem;
+            color: var(--x-accent);
+            margin-right: 15px;
+        }
+        
+        /* 联系信息 */
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .contact-method {
+            display: flex;
+            align-items: center;
+            padding: 0.75rem 1.25rem;
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+        
+        .contact-icon {
+            font-size: 1.2rem;
+            margin-right: 10px;
+            color: var(--x-accent);
+        }
+        
+        /* 商业模式部分 */
+        .business-model-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .model-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 1.5rem;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+        
+        .model-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--x-accent);
+        }
+        
+        .revenue-model {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background-color: var(--card-bg);
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+        }
+        
+        /* 页脚 */
+        footer {
+            border-top: 1px solid var(--border-color);
+            padding: 2rem 1rem;
+            margin-top: 3rem;
+            text-align: center;
+            color: var(--x-gray);
+        }
+        
+        .copyright {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .dashboard, .business-model-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-menu {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .data-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+            }
+        }
+        
+        /* 内容分区样式 */
+        .section {
+            margin: 3rem 0;
+            padding-top: 2rem;
+        }
+        
+        .section-title {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--x-light);
+            border-bottom: 2px solid var(--x-accent);
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+        
+        /* 页面切换动画 */
+        .page-transition {
+            animation: pageFadeIn 0.5s ease-in-out;
+        }
+        
+        @keyframes pageFadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* 滑动指示器 */
+        .slide-indicator {
+            position: fixed;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 999;
+        }
+        
+        .indicator-dot {
+            display: block;
+            width: 12px;
+            height: 12px;
+            margin: 12px 0;
+            background-color: var(--x-gray);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        
+        .indicator-dot.active {
+            background-color: var(--x-accent);
+            transform: scale(1.3);
+        }
+        
+        .indicator-dot:hover {
+            background-color: var(--x-accent);
+        }
+        
+        /* 返回主页按钮 */
+        .home-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background-color: var(--x-accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 999;
+            box-shadow: 0 4px 12px rgba(29, 155, 240, 0.3);
+            transition: transform 0.3s, background-color 0.3s;
+        }
+        
+        .home-btn:hover {
+            transform: scale(1.1);
+            background-color: var(--x-hover);
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo" onclick="showPage('home')">
+                <i class="fas fa-seedling logo-icon"></i>
+                SHINAE SEEDING
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <div class="nav-link active" onclick="showPage('home')">数据看板</div>
+                </li>
+                <li class="nav-item">
+                    <div class="nav-link">解决方案</div>
+                    <ul class="dropdown-menu">
+                        <li><a onclick="showPage('tech')">核心技术</a></li>
+                        <li><a onclick="showPage('advantage')">竞争优势</a></li>
+                        <li><a onclick="showPage('economics')">经济效益</a></li>
+                        <li><a onclick="showPage('business')">商业模式</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <div class="nav-link" onclick="showPage('partnership')">战略合作</div>
+                </li>
+                <li class="nav-item">
+                    <div class="nav-link" onclick="showPage('contact')">联系我们</div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    
+    <!-- 页面滑动指示器 -->
+    <div class="slide-indicator">
+        <span class="indicator-dot active" onclick="showPage('home')"></span>
+        <span class="indicator-dot" onclick="showPage('tech')"></span>
+        <span class="indicator-dot" onclick="showPage('advantage')"></span>
+        <span class="indicator-dot" onclick="showPage('economics')"></span>
+        <span class="indicator-dot" onclick="showPage('business')"></span>
+        <span class="indicator-dot" onclick="showPage('partnership')"></span>
+        <span class="indicator-dot" onclick="showPage('contact')"></span>
+    </div>
+    
+    <!-- 返回主页按钮 -->
+    <div class="home-btn" onclick="showPage('home')">
+        <i class="fas fa-home"></i>
+    </div>
+    
+    <!-- 页面容器 -->
+    <div class="page-container" id="pageContainer">
+        <!-- 主页 -->
+        <div id="home" class="page active page-transition">
+            <div class="container">
+                <section class="hero">
+                    <h1>咖啡组培种苗产业化与专利商业模式</h1>
+                    <p class="hero-subtitle">
+                        利用已验证的植物组织培养技术，为商业化咖啡种植提供标准化、脱毒化、工厂化的优质种苗解决方案。
+                        结合省农科院权威合作，构建"技术+专利+种苗+服务"的多元化盈利模式。
+                    </p>
+                </section>
+
+                <!-- Dashboard 数据看板 -->
+                <section>
+                    <h2 class="section-title">核心数据看板</h2>
+                    <div class="dashboard">
+                        <div class="card">
+                            <div class="card-header">
+                                <i class="fas fa-clock card-icon"></i>
+                                <h3 class="card-title">生产周期对比</h3>
+                            </div>
+                            <p>传统育苗周期长，严重制约产业响应速度。</p>
+                            <div class="data-grid">
+                                <div class="data-item traditional-cell">
+                                    <div class="data-value">12-18个月</div>
+                                    <div class="data-label">传统育苗周期</div>
+                                </div>
+                                <div class="data-item tech-cell">
+                                    <div class="data-value">6-8个月</div>
+                                    <div class="data-label">组培技术周期</div>
+                                </div>
+                            </div>
+                            <div class="data-improvement" style="margin-top: 1rem;">
+                                <i class="fas fa-arrow-up"></i> 周期缩短 <strong>60%</strong>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-header">
+                                <i class="fas fa-check-double card-icon"></i>
+                                <h3 class="card-title">成活率与一致性</h3>
+                            </div>
+                            <p>解决传统育苗变异大、病害多的核心痛点。</p>
+                            <div class="data-grid">
+                                <div class="data-item">
+                                    <div class="data-value">75%</div>
+                                    <div class="data-label">传统苗成活率</div>
+                                </div>
+                                <div class="data-item">
+                                    <div class="data-value">95%+</div>
+                                    <div class="data-label">组培苗成活率</div>
+                                </div>
+                                <div class="data-item">
+                                    <div class="data-value">高度分离</div>
+                                    <div class="data-label">传统苗性状</div>
+                                </div>
+                                <div class="data-item">
+                                    <div class="data-value">100%一致</div>
+                                    <div class="data-label">组培苗性状</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-header">
+                                <i class="fas fa-chart-line card-icon"></i>
+                                <h3 class="card-title">经济效益预测</h3>
+                            </div>
+                            <p>1000亩种植基地五年期综合收益对比分析。</p>
+                            <div class="data-grid">
+                                <div class="data-item">
+                                    <div class="data-value">20-30%</div>
+                                    <div class="data-label">综合收益提升</div>
+                                </div>
+                                <div class="data-item">
+                                    <div class="data-value">1-2季</div>
+                                    <div class="data-label">投资回收期</div>
+                                </div>
+                            </div>
+                            <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--x-gray);">
+                                前期种苗价差可通过溢价收益与稳产收益快速覆盖
+                            </p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+        
+        <!-- 核心技术页面 -->
+        <div id="tech" class="page">
+            <div class="container">
+                <section class="hero">
+                    <h1>核心技术优势</h1>
+                    <p class="hero-subtitle">
+                        组培技术带来的三大革新，彻底改变咖啡育苗产业格局
+                    </p>
+                </section>
+                
+                <section class="section">
+                    <h2 class="section-title">组培技术三大革新</h2>
+                    <div class="card">
+                        <div class="card-header">
+                            <i class="fas fa-dna card-icon"></i>
+                            <h3 class="card-title">技术原理与突破</h3>
+                        </div>
+                        <div class="data-grid">
+                            <div class="data-item">
+                                <div class="data-value"><i class="fas fa-tachometer-alt"></i></div>
+                                <div class="data-label">周期缩短60%</div>
+                                <p style="margin-top: 0.5rem; font-size: 0.9rem;">通过优化培养基配方与环境控制，成苗周期从12-18个月缩短至6-8个月</p>
+                            </div>
+                            <div class="data-item">
+                                <div class="data-value"><i class="fas fa-clone"></i></div>
+                                <div class="data-label">性状100%一致</div>
+                                <p style="margin-top: 0.5rem; font-size: 0.9rem;">无性克隆扩繁技术，确保每株苗完全继承母本优良性状</p>
+                            </div>
+                            <div class="data-item">
+                                <div class="data-value"><i class="fas fa-shield-virus"></i></div>
+                                <div class="data-label">彻底脱毒生产</div>
+                                <p style="margin-top: 0.5rem; font-size: 0.9rem;">无菌环境生产，杜绝线虫、镰刀菌等土传病害，成活率达95%+</p>
+                            </div>
+                            <div class="data-item">
+                                <div class="data-value"><i class="fas fa-industry"></i></div>
+                                <div class="data-label">工厂化标准生产</div>
+                                <p style="margin-top: 0.5rem; font-size: 0.9rem;">摆脱季节限制，实现全年365天标准化种苗生产与供应</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <section class="section">
+                    <h2 class="section-title">技术流程示意图</h2>
+                    <div class="card">
+                        <div class="card-header">
+                            <i class="fas fa-project-diagram card-icon"></i>
+                            <h3 class="card-title">标准化生产流程</h3>
+                        </div>
+                        <div style="padding: 1.5rem 0;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+                                <div style="text-align: center; flex: 1;">
+                                    <div style="width: 60px; height: 60px; background-color: var(--x-accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; color: white;">
+                                        <i class="fas fa-seedling"></i>
+                                    </div>
+                                    <div style="font-weight: bold;">外植体选择</div>
+                                    <div style="color: var(--x-gray); font-size: 0.9rem;">优选母株健康组织</div>
+                                </div>
+                                <div style="flex: 0 0 40px; text-align: center; color: var(--x-accent);">
+                                    <i class="fas fa-arrow-right"></i>
+                                </div>
+                                <div style="text-align: center; flex: 1;">
+                                    <div style="width: 60px; height: 60px; background-color: var(--x-accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; color: white;">
+                                        <i class="fas fa-vial"></i>
+                                    </div>
+                                    <div style="font-weight: bold;">无菌培养</div>
+                                    <div style="color: var(--x-gray); font-size: 0.9rem;">培养基优化与扩繁</div>
+                                </div>
+                                <div style="flex: 0 0 40px; text-align: center; color: var(--x-accent);">
+                                    <i class="fas fa-arrow-right"></i>
+                                </div>
+                                <div style="text-align: center; flex: 1;">
+                                    <div style="width: 60px; height: 60px; background-color: var(--x-accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; color: white;">
+                                        <i class="fas fa-leaf"></i>
+                                    </div>
+                                    <div style="font-weight: bold;">生根壮苗</div>
+                                    <div style="color: var(--x-gray); font-size: 0.9rem;">诱导根系发育</div>
+                                </div>
+                                <div style="flex: 0 0 40px; text-align: center; color: var(--x-accent);">
+                                    <i class="fas fa-arrow-right"></i>
+                                </div>
+                                <div style="text-align: center; flex: 1;">
+                                    <div style="width: 60px; height: 60px; background-color: var(--x-accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; color: white;">
+                                        <i class="fas fa-tree"></i>
+                                    </div>
+                                    <div style="font-weight: bold;">炼苗移栽</div>
+                                    <div style="color: var(--x-gray); font-size: 0.9rem;">适应自然环境</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+        
+        <!-- 竞争优势页面 -->
+        <div id="advantage" class="page">
+            <div class="container">
+                <section class="hero">
+                    <h1>多维竞争优势</h1>
+                    <p class="hero-subtitle">
+                        与传统育苗方式的全方位对比，展现技术驱动的行业变革
+                    </p>
+                </section>
+                
+                <section class="section">
+                    <h2 class="section-title">竞争优势矩阵</h2>
+                    <div class="card">
+                        <table class="comparison-table">
+                            <thead>
+                                <tr>
+                                    <th width="25%">对比维度</th>
+                                    <th width="35%">传统育苗市场</th>
+                                    <th width="40%"><strong>SHINAE SEEDING 组培方案</strong></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>技术壁垒</strong></td>
+                                    <td>低，依赖经验与自然环境</td>
+                                    <td class="tech-cell">高，实验室技术+专利保护</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>品控能力</strong></td>
+                                    <td>不稳定，受气候土壤影响</td>
+                                    <td class="tech-cell">标准化，工厂化质量控制体系</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>供应稳定性</strong></td>
+                                    <td>季节性波动，受自然条件限制</td>
+                                    <td class="tech-cell">全年稳定供应，可预测生产计划</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>可扩展性</strong></td>
+                                    <td>有限，依赖土地与人工</td>
+                                    <td class="tech-cell">强，模块化生产单元快速复制</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>研发迭代</strong></td>
+                                    <td>缓慢，传统育种周期长</td>
+                                    <td class="tech-cell">快速，实验室条件下加速育种</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>抗风险能力</strong></td>
+                                    <td>弱，易受病虫害影响</td>
+                                    <td class="tech-cell">强，脱毒苗+环境控制</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>规模化成本</strong></td>
+                                    <td>边际成本递增</td>
+                                    <td class="tech-cell">边际成本递减</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+                
+                <section class="section">
+                    <h2 class="section-title">市场定位与差异化</h2>
+                    <div class="dashboard">
+                        <div class="card">
+                            <div class="card-header">
+                                <i class="fas fa-bullseye card-icon"></i>
+                                <h3 class="card-title">精准市场定位</h3>
+                            </div>
+                            <p>专注于服务大型咖啡种植基地、精品庄园及产业链整合企业</p>
+                            <ul style="margin-top: 1rem; padding-left: 1.5rem;">
+                                <li style="margin-bottom: 0.5rem;">对种苗品质和稳定性有极致要求</li>
+                                <li style="margin-bottom: 0.5rem;">有明确的品种升级或规模扩张计划</li>
+                                <li style="margin-bottom: 0.5rem;">具备为高品质投入付费的能力与意识</li>
+                                <li>决策逻辑更看重长期综合收益而非单纯低价</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="card">
+                            <div class="card-header">
+                                <i class="fas fa-university card-icon"></i>
+                                <h3 class="card-title">技术合作壁垒</h3>
+                            </div>
+                            <p>与省农科院的深度合作构建了难以复制的竞争壁垒</p>
+                            <div class="data-grid" style="margin-top: 1rem;">
+                                <div class="data-item">
+                                    <div class="data-value"><i class="fas fa-award"></i></div>
+                                    <div class="data-label">权威认证</div>
+                                </div>
+                                <div class="data-item">
+                                    <div class="data-value"><i class="fas fa-flask"></i></div>
+                                    <div class="data-label">联合研发</div>
+                                </div>
+                                <div class="data-item">
+                                    <div class="data-value"><i class="fas fa-file-contract"></i></div>
+                                    <div class="data-label">专利共享</div>
+                                </div>
+                                <div class="data-item">
+                                    <div class="data-value"><i class="fas fa-door-open"></i></div>
+                                    <div class="data-label">行业准入</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+        
+        <!-- 经济效益页面 -->
+        <div id="economics" class="page">
+            <div class="container">
+                <section class="hero">
+                    <h1>详细经济效益分析</h1>
+                    <p class="hero-subtitle">
+                        基于1000亩种植基地的五年期财务模型，展现组培技术的投资回报价值
+                    </p>
+                </section>
+                
+                <section class="section">
+                    <h2 class="section-title">成本效益对比分析</h2>
+                    <div class="card">
+                        <div class="card-header">
+                            <i class="fas fa-calculator card-icon"></i>
+                            <h3 class="card-title">1000亩种植基地五年期财务模型</h3>
+                        </div>
+                        <div class="data-grid">
+                            <div class="data-item">
+                                <div class="data-value">3.16元/株</div>
+                                <div class="data-label">组培苗有效成本</div>
+                                <p style="margin-top: 0.5rem; font-size: 0.9rem;">（考虑95%成活率）</p>
+                            </div>
+                            <div class="data-item">
+                                <div class="data-value">2.0元/株</div>
+                                <div class="data-label">传统苗有效成本</div>
+                                <p style="margin-top: 0.5rem; font-size: 0.9rem;">（考虑75%成活率）</p>
+                            </div>
+                            <div class="data-item">
+                                <div class="data-value">~25%</div>
+                                <div class="data-label">传统苗补种成本</div>
+                                <p style="margin-top: 0.5rem; font-size: 0.9rem;">死亡率导致的额外成本</p>
+                            </div>
+                            <div class="data-item">
+                                <div class="data-value"><5%</div>
+                                <div class="data-label">组培苗补种成本</div>
+                                <p style="margin-top: 0.5rem; font-size: 0.9rem;">极低死亡率节省大量成本</p>
+                            </div>
+                        </div>
+                        
+                        <div style="margin-top: 1.5rem;">
+                            <h4 style="color: var(--x-light); margin-bottom: 1rem;">详细成本分解（每亩）</h4>
+                            <table class="comparison-table">
+                                <thead>
+                                    <tr>
+                                        <th>成本项目</th>
+                                        <th>传统育苗</th>
+                                        <th>组培技术</th>
+                                        <th>节省/增值</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>种苗采购成本</td>
+                                        <td>450元 (300株×1.5元)</td>
+                                        <td>900元 (300株×3.0元)</td>
+                                        <td class="data-negative">-450元</td>
+                                    </tr>
+                                    <tr>
+                                        <td>补种成本（人工+苗）</td>
+                                        <td>225元 (25%补种率)</td>
+                                        <td>45元 (5%补种率)</td>
+                                        <td class="tech-cell">+180元</td>
+                                    </tr>
+                                    <tr>
+                                        <td>产量损失（前两年）</td>
+                                        <td>约600元</td>
+                                        <td>约120元</td>
+                                        <td class="tech-cell">+480元</td>
+                                    </tr>
+                                    <tr>
+                                        <td>品质溢价（每年）</td>
+                                        <td>0元</td>
+                                        <td>800-1200元</td>
+                                        <td class="tech-cell">+800-1200元</td>
+                                    </tr>
+                                    <tr style="font-weight: bold; background-color: rgba(255,255,255,0.05);">
+                                        <td>五年综合收益</td>
+                                        <td>基准水平</td>
+                                        <td>提升20-30%</td>
+                                        <td class="tech-cell">显著正回报</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <div style="margin-top: 1.5rem; padding: 1rem; background-color: rgba(16, 185, 129, 0.1); border-radius: 8px;">
+                            <h4 style="color: #10b981; margin-bottom: 0.5rem;">核心价值点：</h4>
+                            <p>组培苗虽然单株采购成本高1.5元，但通过：1）高成活率减少补种损失；2）性状一致性提升商品豆溢价（预计2-4元/公斤）；3）早产稳产带来现金流改善，能在1-2个产季内收回额外投入，五年期综合收益提升20-30%。</p>
+                        </div>
+                    </div>
+                </section>
+                
+                <section class="section">
+                    <h2 class="section-title">投资回收期分析</h2>
+                    <div class="card">
+                        <div class="card-header">
+                            <i class="fas fa-chart-line card-icon"></i>
+                            <h3 class="card-title">投资回报时间线</h3>
+                        </div>
+                        <div style="padding: 1.5rem 0;">
+                            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
+                                <div style="width: 100%; background-color: rgba(255,255,255,0.1); height: 20px; border-radius: 10px; position: relative;">
+                                    <div style="position: absolute; left: 0; width: 20%; height: 100%; background-color: #ef4444; border-radius: 10px 0 0 10px;"></div>
+                                    <div style="position: absolute; left: 20%; width: 30%; height: 100%; background-color: #f59e0b;"></div>
+                                    <div style="position: absolute; left: 50%; width: 50%; height: 100%; background-color: #10b981; border-radius: 0 10px 10px 0;"></div>
+                                </div>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; font-size: 0.9rem; color: var(--x-gray);">
+                                <div>第0-1季：初始投入期</div>
+                                <div>第1-2季：成本回收期</div>
+                                <div>第2-5季：净收益期</div>
+                            </div>
+                            <div style="margin-top: 2rem;">
+                                <div style="display: flex; align-items: center; margin-bottom: 1rem;">
+                                    <div style="width: 20px; height: 20px; background-color: #ef4444; border-radius: 4px; margin-right: 10px;"></div>
+                                    <div>额外种苗成本投入</div>
+                                </div>
+                                <div style="display: flex; align-items: center; margin-bottom: 1rem;">
+                                    <div style="width: 20px; height: 20px; background-color: #f59e0b; border-radius: 4px; margin-right: 10px;"></div>
+                                    <div>通过减少补种成本与产量损失回收投资</div>
+                                </div>
+                                <div style="display: flex; align-items: center;">
+                                    <div style="width: 20px; height: 20px; background-color: #10b981; border-radius: 4px; margin-right: 10px;"></div>
+                                    <div>通过品质溢价与稳产实现净收益增长</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+        
+        <!-- 商业模式页面 -->
+        <div id="business" class="page">
+            <div class="container">
+                <section class="hero">
+                    <h1>专利版权商业模式</h1>
+                    <p class="hero-subtitle">
+                        "技术+专利+种苗+服务"四维盈利体系，构建可持续竞争优势
+                    </p>
+                </section>
+                
+                <section class="section">
+                    <h2 class="section-title">四维盈利体系</h2>
+                    <div class="card">
+                        <div class="card-header">
+                            <i class="fas fa-chess-queen card-icon"></i>
+                            <h3 class="card-title">多元化收入来源</h3>
+                        </div>
+                        
+                        <div class="business-model-grid">
+                            <div class="model-card">
+                                <h4 style="color: var(--x-accent); margin-bottom: 0.75rem;"><i class="fas fa-seedling" style="margin-right: 8px;"></i>1. 专利品种授权</h4>
+                                <p>与省农科院联合开发并申请专利的咖啡新品种，向种植企业收取品种授权使用费。预计每个新品种授权费用为10-50万元/年，根据种植面积阶梯定价。</p>
+                                <div style="margin-top: 1rem; padding: 0.75rem; background-color: rgba(29, 155, 240, 0.1); border-radius: 6px;">
+                                    <div style="font-size: 0.9rem; color: var(--x-gray);">毛利率: 85-90%</div>
+                                </div>
+                            </div>
+                            
+                            <div class="model-card">
+                                <h4 style="color: var(--x-accent); margin-bottom: 0.75rem;"><i class="fas fa-boxes" style="margin-right: 8px;"></i>2. 优质组培种苗销售</h4>
+                                <p>直接销售脱毒组培苗，单价3-8元/株（根据品种稀缺性），目标市占率三年内达到主产区优质种苗市场的15%。</p>
+                                <div style="margin-top: 1rem; padding: 0.75rem; background-color: rgba(29, 155, 240, 0.1); border-radius: 6px;">
+                                    <div style="font-size: 0.9rem; color: var(--x-gray);">毛利率: 60-70%</div>
+                                </div>
+                            </div>
+                            
+                            <div class="model-card">
+                                <h4 style="color: var(--x-accent); margin-bottom: 0.75rem;"><i class="fas fa-cogs" style="margin-right: 8px;"></i>3. 技术解决方案服务</h4>
+                                <p>为大型种植基地提供全套组培实验室建设、技术培训、生产管理服务，单项目服务费50-200万元。</p>
+                                <div style="margin-top: 1rem; padding: 0.75rem; background-color: rgba(29, 155, 240, 0.1); border-radius: 6px;">
+                                    <div style="font-size: 0.9rem; color: var(--x-gray);">毛利率: 70-80%</div>
+                                </div>
+                            </div>
+                            
+                            <div class="model-card">
+                                <h4 style="color: var(--x-accent); margin-bottom: 0.75rem;"><i class="fas fa-handshake" style="margin-right: 8px;"></i>4. Royalty收入分成</h4>
+                                <p>对于特别优质的专利品种，采取"基础授权费+销售额分成"模式，长期分享品种价值红利，分成比例1-3%。</p>
+                                <div style="margin-top: 1rem; padding: 0.75rem; background-color: rgba(29, 155, 240, 0.1); border-radius: 6px;">
+                                    <div style="font-size: 0.9rem; color: var(--x-gray);">持续现金流，无边际成本</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <section class="section">
+                    <h2 class="section-title">收入结构与增长预测</h2>
+                    <div class="card">
+                        <div class="revenue-model">
+                            <h4 style="color: var(--x-light); margin-bottom: 1rem;">预期收入结构（第三年）</h4>
+                            <div class="data-grid">
+                                <div class="data-item">
+                                    <div class="data-value">50%</div>
+                                    <div class="data-label">种苗销售收入</div>
+                                    <p style="margin-top: 0.5rem; font-size: 0.9rem;">核心基础业务</p>
+                                </div>
+                                <div class="data-item">
+                                    <div class="data-value">25%</div>
+                                    <div class="data-label">专利授权收入</div>
+                                    <p style="margin-top: 0.5rem; font-size: 0.9rem;">高毛利可持续收入</p>
+                                </div>
+                                <div class="data-item">
+                                    <div class="data-value">15%</div>
+                                    <div class="data-label">技术服务收入</div>
+                                    <p style="margin-top: 0.5rem; font-size: 0.9rem;">专业技术输出</p>
+                                </div>
+                                <div class="data-item">
+                                    <div class="data-value">10%</div>
+                                    <div class="data-label">Royalty分成收入</div>
+                                    <p style="margin-top: 0.5rem; font-size: 0.9rem;">长期价值分享</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div style="margin-top: 2rem;">
+                            <h4 style="color: var(--x-light); margin-bottom: 1rem;">三年增长预测</h4>
+                            <div style="display: flex; justify-content: space-between; align-items: flex-end; height: 200px; border-bottom: 1px solid var(--border-color); padding-bottom: 1rem;">
+                                <div style="text-align: center; flex: 1;">
+                                    <div style="height: 80px; background: linear-gradient(to top, var(--x-accent), #60a5fa); width: 60%; margin: 0 auto;"></div>
+                                    <div style="margin-top: 0.5rem; font-weight: bold;">第一年</div>
+                                    <div style="color: var(--x-gray); font-size: 0.9rem;">市场导入期</div>
+                                </div>
+                                <div style="text-align: center; flex: 1;">
+                                    <div style="height: 140px; background: linear-gradient(to top, var(--x-accent), #60a5fa); width: 60%; margin: 0 auto;"></div>
+                                    <div style="margin-top: 0.5rem; font-weight: bold;">第二年</div>
+                                    <div style="color: var(--x-gray); font-size: 0.9rem;">快速成长期</div>
+                                </div>
+                                <div style="text-align: center; flex: 1;">
+                                    <div style="height: 200px; background: linear-gradient(to top, var(--x-accent), #60a5fa); width: 60%; margin: 0 auto;"></div>
+                                    <div style="margin-top: 0.5rem; font-weight: bold;">第三年</div>
+                                    <div style="color: var(--x-gray); font-size: 0.9rem;">稳定盈利期</div>
+                                </div>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; margin-top: 1rem;">
+                                <div style="text-align: center; flex: 1;">
+                                    <div style="font-weight: bold;">800万元</div>
+                                    <div style="color: var(--x-gray); font-size: 0.9rem;">预计收入</div>
+                                </div>
+                                <div style="text-align: center; flex: 1;">
+                                    <div style="font-weight: bold;">2000万元</div>
+                                    <div style="color: var(--x-gray); font-size: 0.9rem;">预计收入</div>
+                                </div>
+                                <div style="text-align: center; flex: 1;">
+                                    <div style="font-weight: bold;">3500万元</div>
+                                    <div style="color: var(--x-gray); font-size: 0.9rem;">预计收入</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+        
+        <!-- 战略合作页面 -->
+        <div id="partnership" class="page">
+            <div class="container">
+                <section class="hero">
+                    <h1>权威战略合作</h1>
+                    <p class="hero-subtitle">
+                        与省农业科学院的深度合作，构建技术领先性与风险缓释保障
+                    </p>
+                </section>
+                
+                <section class="partner-section">
+                    <div class="partner-logo">
+                        <i class="fas fa-handshake"></i>
+                        <div>
+                            <h2 style="color: var(--x-light);">省农业科学院合作价值</h2>
+                            <p style="color: var(--x-gray);">技术领先性的最高学术认证与风险缓释保障</p>
+                        </div>
+                    </div>
+                    
+                    <div class="data-grid">
+                        <div class="data-item">
+                            <div class="data-value"><i class="fas fa-award"></i></div>
+                            <div class="data-label">技术权威认证</div>
+                            <p style="margin-top: 0.5rem; font-size: 0.9rem;">基于完整技术流程与数据的官方学术认可</p>
+                        </div>
+                        <div class="data-item">
+                            <div class="data-value"><i class="fas fa-flask"></i></div>
+                            <div class="data-label">联合专利开发</div>
+                            <p style="margin-top: 0.5rem; font-size: 0.9rem;">共同申请植物新品种权与组培技术专利</p>
+                        </div>
+                        <div class="data-item">
+                            <div class="data-value"><i class="fas fa-file-invoice-dollar"></i></div>
+                            <div class="data-label">政策资源导流</div>
+                            <p style="margin-top: 0.5rem; font-size: 0.9rem;">对接政府科研经费与政策性低息贷款</p>
+                        </div>
+                        <div class="data-item">
+                            <div class="data-value"><i class="fas fa-door-open"></i></div>
+                            <div class="data-label">行业准入背书</div>
+                            <p style="margin-top: 0.5rem; font-size: 0.9rem;">降低大型国企与政府项目决策顾虑</p>
+                        </div>
+                    </div>
+                </section>
+                
+                <section class="section">
+                    <h2 class="section-title">合作成果与未来规划</h2>
+                    <div class="dashboard">
+                        <div class="card">
+                            <div class="card-header">
+                                <i class="fas fa-clipboard-list card-icon"></i>
+                                <h3 class="card-title">已取得的合作成果</h3>
+                            </div>
+                            <ul style="margin-top: 1rem; padding-left: 1.5rem;">
+                                <li style="margin-bottom: 0.75rem;">组培技术流程的全面验证与优化</li>
+                                <li style="margin-bottom: 0.75rem;">3个特色咖啡品种的组培体系建立</li>
+                                <li style="margin-bottom: 0.75rem;">联合申报省级农业科技项目2项</li>
+                                <li style="margin-bottom: 0.75rem;">共同发表学术论文1篇</li>
+                                <li>建立长期技术交流与人才培养机制</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="card">
+                            <div class="card-header">
+                                <i class="fas fa-road card-icon"></i>
+                                <h3 class="card-title">未来合作规划</h3>
+                            </div>
+                            <ul style="margin-top: 1rem; padding-left: 1.5rem;">
+                                <li style="margin-bottom: 0.75rem;">联合申请国家级重点研发计划项目</li>
+                                <li style="margin-bottom: 0.75rem;">共同培育5-8个具有自主知识产权的咖啡新品种</li>
+                                <li style="margin-bottom: 0.75rem;">建立省级咖啡组培技术工程中心</li>
+                                <li style="margin-bottom: 0.75rem;">制定咖啡组培苗行业技术标准</li>
+                                <li>联合培养硕士、博士研究生及技术骨干</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+        
+        <!-- 联系我们页面 -->
+        <div id="contact" class="page">
+            <div class="container">
+                <section class="hero">
+                    <h1>联系与合作</h1>
+                    <p class="hero-subtitle">
+                        欢迎产业资本、咖啡产业链投资机构及大型种植企业洽谈合作
+                    </p>
+                </section>
+                
+                <section class="section">
+                    <h2 class="section-title">联系方式</h2>
+                    <div class="contact-info">
+                        <div class="contact-method">
+                            <i class="fab fa-weixin contact-icon"></i>
+                            <div>
+                                <div style="font-weight: 700;">微信</div>
+                                <div>+86 15800222338</div>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-method">
+                            <i class="fab fa-whatsapp contact-icon"></i>
+                            <div>
+                                <div style="font-weight: 700;">WhatsApp</div>
+                                <div>+852 9318 8252</div>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-method">
+                            <i class="fas fa-envelope contact-icon"></i>
+                            <div>
+                                <div style="font-weight: 700;">邮箱</div>
+                                <div>erik.wong@jebi.space</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <section class="section">
+                    <h2 class="section-title">合作方向</h2>
+                    <div class="dashboard">
+                        <div class="card">
+                            <div class="card-header">
+                                <i class="fas fa-industry card-icon"></i>
+                                <h3 class="card-title">产业资本合作</h3>
+                            </div>
+                            <p>欢迎咖啡产业链上下游企业、大型种植集团进行战略投资或业务合作</p>
+                            <ul style="margin-top: 1rem; padding-left: 1.5rem;">
+                                <li style="margin-bottom: 0.5rem;">战略性股权投资</li>
+                                <li style="margin-bottom: 0.5rem;">长期种苗供应协议</li>
+                                <li style="margin-bottom: 0.5rem;">联合品种开发与推广</li>
+                                <li>产业链协同整合</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="card">
+                            <div class="card-header">
+                                <i class="fas fa-hand-holding-usd card-icon"></i>
+                                <h3 class="card-title">投资机构合作</h3>
+                            </div>
+                            <p>寻求理解农业科技、消费升级赛道，有产业资源的专业投资机构</p>
+                            <ul style="margin-top: 1rem; padding-left: 1.5rem;">
+                                <li style="margin-bottom: 0.5rem;">A轮融资500万元人民币</li>
+                                <li style="margin-bottom: 0.5rem;">资金用于产能扩建与研发深化</li>
+                                <li style="margin-bottom: 0.5rem;">开放董事会席位给重要战略投资者</li>
+                                <li>提供清晰的退出路径与回报预期</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="copyright">
+            <i class="fas fa-copyright" style="margin-right: 5px;"></i>
+            <span>2024 SHINAE SEEDING. 保留所有权利。</span>
+        </div>
+        <p>本文件所含信息属于保密信息，仅用于为潜在投资方介绍项目用途。</p>
+    </footer>
+
+    <script>
+        // 页面切换功能
+        let currentPage = 'home';
+        const pages = ['home', 'tech', 'advantage', 'economics', 'business', 'partnership', 'contact'];
+        
+        function showPage(pageId) {
+            // 隐藏当前页面
+            document.getElementById(currentPage).classList.remove('active');
+            document.querySelector(`.nav-link[onclick="showPage('${currentPage}')"]`)?.classList.remove('active');
+            document.querySelector(`.dropdown-menu a[onclick="showPage('${currentPage}')"]`)?.classList.remove('active');
+            
+            // 更新当前页面指示器
+            const dots = document.querySelectorAll('.indicator-dot');
+            dots.forEach(dot => dot.classList.remove('active'));
+            
+            // 显示新页面
+            document.getElementById(pageId).classList.add('active');
+            document.getElementById(pageId).classList.add('page-transition');
+            document.querySelector(`.nav-link[onclick="showPage('${pageId}')"]`)?.classList.add('active');
+            document.querySelector(`.dropdown-menu a[onclick="showPage('${pageId}')"]`)?.classList.add('active');
+            
+            // 更新指示点
+            const pageIndex = pages.indexOf(pageId);
+            if (pageIndex >= 0) {
+                dots[pageIndex].classList.add('active');
+            }
+            
+            // 更新当前页面
+            currentPage = pageId;
+            
+            // 更新URL（不刷新页面）
+            history.pushState({page: pageId}, '', `#${pageId}`);
+            
+            // 滚动到顶部
+            window.scrollTo(0, 0);
+        }
+        
+        // 初始化页面
+        document.addEventListener('DOMContentLoaded', function() {
+            // 检查URL中的hash，如果有则跳转到对应页面
+            const hash = window.location.hash.substring(1);
+            if (hash && pages.includes(hash)) {
+                showPage(hash);
+            }
+            
+            // 监听浏览器前进后退按钮
+            window.addEventListener('popstate', function(event) {
+                if (event.state && event.state.page) {
+                    showPage(event.state.page);
+                }
+            });
+            
+            // 数据卡片悬停效果增强
+            const cards = document.querySelectorAll('.card, .model-card');
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.boxShadow = '0 10px 25px rgba(29, 155, 240, 0.15)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.boxShadow = 'none';
+                });
+            });
+            
+            // 悬停下拉菜单功能
+            const navItems = document.querySelectorAll('.nav-item');
+            navItems.forEach(item => {
+                item.addEventListener('mouseenter', function() {
+                    const dropdown = this.querySelector('.dropdown-menu');
+                    if(dropdown) {
+                        dropdown.style.display = 'block';
+                    }
+                });
+                
+                item.addEventListener('mouseleave', function() {
+                    const dropdown = this.querySelector('.dropdown-menu');
+                    if(dropdown) {
+                        dropdown.style.display = 'none';
+                    }
+                });
+            });
+            
+            // 页面切换动画结束后移除动画类
+            const pageElements = document.querySelectorAll('.page');
+            pageElements.forEach(page => {
+                page.addEventListener('animationend', function() {
+                    this.classList.remove('page-transition');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
