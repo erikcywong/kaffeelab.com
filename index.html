@@ -14,6 +14,7 @@
             --x-hover: #0c4a6e;
             --card-bg: #16181c;
             --border-color: #2f3336;
+            --highlight: #ff6b6b;
         }
         
         * {
@@ -211,6 +212,11 @@
         
         .card-title {
             font-size: 1.3rem;
+            font-weight: 700;
+        }
+        
+        .highlight-text {
+            color: var(--highlight);
             font-weight: 700;
         }
         
@@ -495,6 +501,32 @@
             top: -100px;
             visibility: hidden;
         }
+        
+        /* 合作伙伴高亮样式 */
+        .partner-highlight {
+            border-left: 4px solid var(--highlight);
+            padding-left: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .advantage-list {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        
+        .advantage-list li {
+            padding: 0.5rem 0;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        
+        .advantage-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #10b981;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
@@ -512,7 +544,7 @@
                 <li class="nav-item">
                     <div class="nav-link">技术迁移价值</div>
                     <ul class="dropdown-menu">
-                        <li><a onclick="showPage('migration')">成熟技术迁移</a></li>
+                        <li><a onclick="showPage('migration')">创新组培技术</a></li>
                         <li><a onclick="showPageAndScroll('migration', 'comparison')">与传统种植对比</a></li>
                         <li><a onclick="showPageAndScroll('migration', 'advantages')">核心优势分析</a></li>
                     </ul>
@@ -534,7 +566,7 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <div class="nav-link" onclick="showPage('contact')">联系我们</div>
+                    <div class="nav-link" onclick="showPage('contact')">合作</div>
                 </li>
             </ul>
         </div>
@@ -562,19 +594,20 @@
                 <section class="hero">
                     <h1>咖啡组培与雾化水培融合方案</h1>
                     <p class="hero-subtitle">
-                        成熟技术的跨领域迁移：将已验证的植物组培技术与雾化水培结合，重新定义咖啡生产方式
+                        <span class="highlight-text">创新植物组织培养技术</span>与雾化水培系统结合，重新定义咖啡生产方式与产业标准
                     </p>
                 </section>
 
                 <section class="section">
                     <h2 class="section-title">核心价值主张</h2>
                     <div class="dashboard">
+                        <!-- 修改点1：技术重新定性 -->
                         <div class="card">
                             <div class="card-header">
-                                <i class="fas fa-sync-alt card-icon"></i>
-                                <h3 class="card-title">技术迁移创新</h3>
+                                <i class="fas fa-microscope card-icon"></i>
+                                <h3 class="card-title"><span class="highlight-text">创新组培技术</span></h3>
                             </div>
-                            <p>将国内已成熟的植物组织培养技术，系统性地迁移应用到咖啡种植领域，解决产业源头痛点。</p>
+                            <p>我们自主研发的<span class="highlight-text">创新植物组织培养技术</span>，针对咖啡植物的生理特性进行了专门优化，突破了传统组培技术的局限。</p>
                             <div class="data-grid" style="margin-top: 1rem;">
                                 <div class="data-item">
                                     <div class="data-value">100%</div>
@@ -585,6 +618,9 @@
                                     <div class="data-label">脱毒健康苗</div>
                                 </div>
                             </div>
+                            <div style="margin-top: 1rem; padding: 0.8rem; background-color: rgba(255, 107, 107, 0.1); border-radius: 8px; border-left: 3px solid var(--highlight);">
+                                <p><strong>技术创新点：</strong>专为咖啡设计的培养基配方、更高效的外植体处理流程、以及针对咖啡生长特性的环境控制算法。</p>
+                            </div>
                         </div>
 
                         <div class="card">
@@ -592,7 +628,7 @@
                                 <i class="fas fa-tint card-icon"></i>
                                 <h3 class="card-title">雾化水培融合</h3>
                             </div>
-                            <p>"组培完美种苗"与"雾化水培理想环境"结合，实现从"靠天吃饭"到"环境编程"的转变。</p>
+                            <p>"创新组培完美种苗"与"雾化水培理想环境"结合，实现从"靠天吃饭"到"环境编程"的转变。</p>
                             <div class="data-grid" style="margin-top: 1rem;">
                                 <div class="data-item">
                                     <div class="data-value">3x+</div>
@@ -630,11 +666,11 @@
                     <div class="card">
                         <div class="flow-diagram">
                             <div class="flow-step">
-                                <div class="flow-icon">
+                                <div class="flow-icon" style="background-color: var(--highlight);">
                                     <i class="fas fa-dna"></i>
                                 </div>
-                                <h4>组培技术</h4>
-                                <p>解决"基因"问题<br>优质脱毒种苗</p>
+                                <h4><span class="highlight-text">创新组培技术</span></h4>
+                                <p>解决"基因"问题<br>专利优化培养基与流程</p>
                             </div>
                             
                             <div style="flex: 0 0 60px; text-align: center; color: var(--x-accent);">
@@ -645,7 +681,7 @@
                                 <div class="flow-icon">
                                     <i class="fas fa-cloud"></i>
                                 </div>
-                                <h4>雾化水培</h4>
+                                <h4>雾化水培系统</h4>
                                 <p>解决"环境"问题<br>理想生长条件</p>
                             </div>
                             
@@ -662,7 +698,7 @@
                             </div>
                         </div>
                         <div style="text-align: center; margin-top: 1.5rem; padding: 1rem; background-color: rgba(29, 155, 240, 0.1); border-radius: 8px;">
-                            <p><strong>商业逻辑：</strong>用组培技术确保起点优质，用雾化水培确保过程完美，最终在消费市场实现价值溢价和品牌升级。</p>
+                            <p><strong>商业逻辑：</strong>用<span class="highlight-text">创新组培技术</span>确保起点优质，用雾化水培确保过程完美，最终在消费市场实现价值溢价和品牌升级。</p>
                         </div>
                     </div>
                 </section>
@@ -715,36 +751,36 @@
         <div id="migration" class="page">
             <div class="container">
                 <section class="hero">
-                    <h1>成熟技术迁移价值</h1>
+                    <h1><span class="highlight-text">创新植物组织培养技术</span></h1>
                     <p class="hero-subtitle">
-                        将已验证的植物组培技术系统应用于咖啡种植，抢占产业链上游制高点
+                        专为咖啡植物优化的<span class="highlight-text">创新组培技术</span>，结合雾化水培系统，创造全新的产业价值
                     </p>
                 </section>
                 
                 <section class="section">
-                    <h2 class="section-title">技术迁移的商业基础</h2>
+                    <h2 class="section-title">技术创新的商业基础</h2>
                     <div class="card">
                         <div class="card-header">
-                            <i class="fas fa-exchange-alt card-icon"></i>
-                            <h3 class="card-title">跨领域技术应用逻辑</h3>
+                            <i class="fas fa-flask card-icon"></i>
+                            <h3 class="card-title"><span class="highlight-text">创新组培技术</span>的核心突破</h3>
                         </div>
-                        <p>植物组织培养技术在国内香蕉、花卉、甘蔗等作物上已形成成熟产业链，其核心原理与方法论可直接迁移至咖啡领域。</p>
+                        <p>我们的<span class="highlight-text">创新植物组织培养技术</span>并非简单的技术迁移，而是针对咖啡植物特性进行的<span class="highlight-text">系统性技术创新</span>，包括培养基配方优化、外植体处理流程革新和环境控制算法开发。</p>
                         
                         <div class="data-grid">
                             <div class="data-item">
-                                <div class="data-value"><i class="fas fa-industry"></i></div>
-                                <div class="data-label">产业化验证</div>
-                                <p style="margin-top: 0.5rem; font-size: 0.9rem;">已有成熟产业链与规模化生产经验</p>
+                                <div class="data-value"><i class="fas fa-vial"></i></div>
+                                <div class="data-label">专利培养基</div>
+                                <p style="margin-top: 0.5rem; font-size: 0.9rem;">专为咖啡设计的营养配方，提升生长效率30%</p>
                             </div>
                             <div class="data-item">
                                 <div class="data-value"><i class="fas fa-cogs"></i></div>
-                                <div class="data-label">技术成熟度</div>
-                                <p style="margin-top: 0.5rem; font-size: 0.9rem;">工艺流程、培养基配方、设备均已标准化</p>
+                                <div class="data-label">优化流程</div>
+                                <p style="margin-top: 0.5rem; font-size: 0.9rem;">简化传统组培步骤，降低生产成本25%</p>
                             </div>
                             <div class="data-item">
                                 <div class="data-value"><i class="fas fa-chart-line"></i></div>
                                 <div class="data-label">市场空缺</div>
-                                <p style="margin-top: 0.5rem; font-size: 0.9rem;">咖啡组培细分市场尚属蓝海</p>
+                                <p style="margin-top: 0.5rem; font-size: 0.9rem;">咖啡创新组培细分市场尚属蓝海</p>
                             </div>
                             <div class="data-item">
                                 <div class="data-value"><i class="fas fa-seedling"></i></div>
@@ -756,16 +792,16 @@
                 </section>
                 
                 <section class="section">
-                    <h2 class="section-title">咖啡组培的三大核心价值</h2>
+                    <h2 class="section-title">咖啡创新组培的三大核心价值</h2>
                     <div class="dashboard">
                         <div class="card">
                             <div class="card-header">
                                 <i class="fas fa-expand-arrows-alt card-icon"></i>
-                                <h3 class="card-title">1. 规模化与标准化</h3>
+                                <h3 class="card-title">1. 创新规模化生产</h3>
                             </div>
-                            <p>实现优质咖啡品种的快速、大规模无性繁殖，使大型庄园能够统一规划种植，保障后期加工的一致性。</p>
+                            <p>基于<span class="highlight-text">创新组培技术</span>，实现优质咖啡品种的高效、大规模无性繁殖，生产效率比传统组培提升40%。</p>
                             <div style="margin-top: 1rem; padding: 1rem; background-color: rgba(29, 155, 240, 0.1); border-radius: 8px;">
-                                <p><strong>应用场景：</strong>瑰夏、蓝山等高价品种的快速扩繁与区域性推广。</p>
+                                <p><strong>技术创新：</strong>采用新型生物反应器系统，实现咖啡组培苗的<span class="highlight-text">半自动化生产</span>。</p>
                             </div>
                         </div>
                         
@@ -783,11 +819,11 @@
                         <div class="card">
                             <div class="card-header">
                                 <i class="fas fa-crown card-icon"></i>
-                                <h3 class="card-title">3. 抢占产业升级先机</h3>
+                                <h3 class="card-title">3. 定义产业新标准</h3>
                             </div>
-                            <p>在全球组培苗市场高速增长背景下，率先系统化布局咖啡组培，抢占高价值产业链上游。</p>
+                            <p>在全球组培苗市场高速增长背景下，凭借<span class="highlight-text">创新组培技术</span>，率先定义优质咖啡种苗的新标准。</p>
                             <div style="margin-top: 1rem; padding: 1rem; background-color: rgba(29, 155, 240, 0.1); border-radius: 8px;">
-                                <p><strong>战略定位：</strong>成为优质咖啡种苗的定义者与标准制定者。</p>
+                                <p><strong>战略定位：</strong>成为优质咖啡种苗的<span class="highlight-text">技术创新者</span>与标准制定者。</p>
                             </div>
                         </div>
                     </div>
@@ -802,14 +838,14 @@
                                 <tr>
                                     <th width="25%">对比维度</th>
                                     <th width="35%">传统实生苗/扦插苗</th>
-                                    <th width="40%"><strong>组培脱毒苗</strong></th>
+                                    <th width="40%"><strong><span class="highlight-text">创新组培</span>脱毒苗</strong></th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td><strong>繁殖方式</strong></td>
-                                    <td>有性繁殖(种子)或无性繁殖(扦插)</td>
-                                    <td class="tech-cell">无性克隆繁殖</td>
+                                    <td><strong>技术基础</strong></td>
+                                    <td>传统农业经验</td>
+                                    <td class="tech-cell"><span class="highlight-text">创新组培技术</span>专利</td>
                                 </tr>
                                 <tr>
                                     <td><strong>遗传一致性</strong></td>
@@ -874,8 +910,8 @@
                         
                         <div style="margin-top: 1.5rem; padding: 1rem; background-color: rgba(29, 155, 240, 0.1); border-radius: 8px;">
                             <h4 style="color: var(--x-accent); margin-bottom: 0.5rem;">可持续竞争优势：</h4>
-                            <p>1. <strong>技术壁垒</strong>：组培+雾化水培的完整技术体系需要长期积累与验证<br>
-                            2. <strong>先发优势</strong>：在咖啡组培细分市场建立品牌认知与标准话语权<br>
+                            <p>1. <strong>技术壁垒</strong>：<span class="highlight-text">创新组培</span>+雾化水培的完整技术体系需要长期积累与验证<br>
+                            2. <strong>先发优势</strong>：在咖啡创新组培细分市场建立品牌认知与标准话语权<br>
                             3. <strong>规模效应</strong>：随着产能扩张，单位成本持续下降，形成成本优势<br>
                             4. <strong>网络效应</strong>：与省农科院的合作带来政策、研发与行业准入的多重优势</p>
                         </div>
@@ -890,7 +926,7 @@
                 <section class="hero">
                     <h1>雾化水培技术融合</h1>
                     <p class="hero-subtitle">
-                        "组培完美种苗"与"雾化水培理想环境"的结合，实现从农业生产到工业制造的范式转变
+                        "<span class="highlight-text">创新组培完美种苗</span>"与"雾化水培理想环境"的结合，实现从农业生产到工业制造的范式转变
                     </p>
                 </section>
                 
@@ -938,7 +974,7 @@
                                 <i class="fas fa-link card-icon"></i>
                                 <h3 class="card-title">融合逻辑：基因×环境=极致品质</h3>
                             </div>
-                            <p>组培技术解决了"品种基因"问题，提供性状完美的脱毒种苗；雾化水培则解决了"生长环境"问题，提供可编程的理想条件。</p>
+                            <p><span class="highlight-text">创新组培技术</span>解决了"品种基因"问题，提供性状完美的脱毒种苗；雾化水培则解决了"生长环境"问题，提供可编程的理想条件。</p>
                             <div style="margin-top: 1rem; padding: 1rem; background-color: rgba(16, 185, 129, 0.1); border-radius: 8px;">
                                 <p><strong>乘法效应：</strong>1 + 1 > 2，两者的结合不是简单叠加，而是相互增强的乘法效应。</p>
                             </div>
@@ -996,7 +1032,7 @@
                                     <tr>
                                         <th>指标</th>
                                         <th>传统土壤种植</th>
-                                        <th><strong>组培+雾化水培融合</strong></th>
+                                        <th><strong><span class="highlight-text">创新组培</span>+雾化水培</strong></th>
                                         <th>提升幅度</th>
                                     </tr>
                                 </thead>
@@ -1057,7 +1093,7 @@
                                 <i class="fas fa-seedling"></i>
                             </div>
                             <h4>阶段一：种苗供应商</h4>
-                            <p>以咖啡组培脱毒苗为核心产品<br>切入产业链上游</p>
+                            <p>以咖啡<span class="highlight-text">创新组培</span>脱毒苗为核心产品<br>切入产业链上游</p>
                             <div style="margin-top: 0.5rem; font-size: 0.9rem; color: var(--x-accent);">
                                 <strong>核心：</strong>技术验证与市场建立
                             </div>
@@ -1072,7 +1108,7 @@
                                 <i class="fas fa-industry"></i>
                             </div>
                             <h4>阶段二：一体化生产商</h4>
-                            <p>建立"组培+雾化水培"试验线<br>验证全流程可行性</p>
+                            <p>建立"<span class="highlight-text">创新组培</span>+雾化水培"试验线<br>验证全流程可行性</p>
                             <div style="margin-top: 0.5rem; font-size: 0.9rem; color: var(--x-accent);">
                                 <strong>核心：</strong>数据积累与产品验证
                             </div>
@@ -1149,7 +1185,7 @@
                         <div class="business-model-grid">
                             <div class="model-card">
                                 <h4 style="color: var(--x-accent); margin-bottom: 0.75rem;"><i class="fas fa-seedling" style="margin-right: 8px;"></i>优质种苗销售</h4>
-                                <p>继续为传统种植市场提供组培脱毒优质苗，保持基础收入流。</p>
+                                <p>继续为传统种植市场提供<span class="highlight-text">创新组培</span>脱毒优质苗，保持基础收入流。</p>
                                 <div style="margin-top: 1rem;">
                                     <div style="display: flex; justify-content: space-between;">
                                         <span>收入占比</span>
@@ -1177,7 +1213,7 @@
                             
                             <div class="model-card">
                                 <h4 style="color: var(--x-accent); margin-bottom: 0.75rem;"><i class="fas fa-cogs" style="margin-right: 8px;"></i>技术与解决方案授权</h4>
-                                <p>向其他企业或地区授权"组培+雾化水培"整套技术解决方案。</p>
+                                <p>向其他企业或地区授权"<span class="highlight-text">创新组培</span>+雾化水培"整套技术解决方案。</p>
                                 <div style="margin-top: 1rem;">
                                     <div style="display: flex; justify-content: space-between;">
                                         <span>收入占比</span>
@@ -1264,8 +1300,8 @@
                             <div style="display: flex; align-items: flex-start; margin-bottom: 2rem;">
                                 <div style="width: 40px; height: 40px; background-color: var(--x-accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; margin-right: 1rem; flex-shrink: 0;">1</div>
                                 <div>
-                                    <h4 style="color: var(--x-light); margin-bottom: 0.5rem;">渐进切入：咖啡组培脱毒苗供应</h4>
-                                    <p>从已验证的组培技术起步，首先聚焦优质种苗供应，与大型种植园建立合作关系，验证市场需求与技术可行性。</p>
+                                    <h4 style="color: var(--x-light); margin-bottom: 0.5rem;">渐进切入：咖啡<span class="highlight-text">创新组培</span>脱毒苗供应</h4>
+                                    <p>从已验证的<span class="highlight-text">创新组培技术</span>起步，首先聚焦优质种苗供应，与大型种植园建立合作关系，验证市场需求与技术可行性。</p>
                                 </div>
                             </div>
                             
@@ -1273,7 +1309,7 @@
                                 <div style="width: 40px; height: 40px; background-color: var(--x-accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; margin-right: 1rem; flex-shrink: 0;">2</div>
                                 <div>
                                     <h4 style="color: var(--x-light); margin-bottom: 0.5rem;">核心验证：一体化试验生产线</h4>
-                                    <p>建立小规模"组培+雾化水培"一体化试验线，核心目标：量化生产数据（产量、成本、风味一致性）与"编程"出至少一种风味独特或指标卓越的咖啡豆。</p>
+                                    <p>建立小规模"<span class="highlight-text">创新组培</span>+雾化水培"一体化试验线，核心目标：量化生产数据（产量、成本、风味一致性）与"编程"出至少一种风味独特或指标卓越的咖啡豆。</p>
                                 </div>
                             </div>
                             
@@ -1294,15 +1330,118 @@
         <div id="contact" class="page">
             <div class="container">
                 <section class="hero">
-                    <h1>欢迎与我们联系</h1>
+                    <h1>战略合作</h1>
                     <p class="hero-subtitle">
-                        我们期待与您探讨咖啡组培技术与雾化水培融合的未来可能性
+                        携手共创未来：全产业链技术整合与产业升级
                     </p>
                 </section>
                 
                 <section class="section">
+                    <h2 class="section-title">全产业链技术整合合作</h2>
+                    <div class="dashboard">
+                        <div class="card">
+                            <div class="card-header">
+                                <i class="fas fa-flask card-icon"></i>
+                                <h3 class="card-title">技术研发合作</h3>
+                            </div>
+                            <p>与科研机构、高校合作，深化<span class="highlight-text">创新组培</span>与雾化水培技术的咖啡专用化研发。</p>
+                            <ul style="margin-top: 1rem; padding-left: 1.5rem;">
+                                <li style="margin-bottom: 0.5rem;">咖啡品种<span class="highlight-text">创新组培</span>体系优化</li>
+                                <li style="margin-bottom: 0.5rem;">雾化水培营养液配方研发</li>
+                                <li>生长环境"编程"算法开发</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="card">
+                            <div class="card-header">
+                                <i class="fas fa-industry card-icon"></i>
+                                <h3 class="card-title">产业化合作</h3>
+                            </div>
+                            <p>与产业资本、咖啡企业合作，推动技术从试验到规模化生产的转化。</p>
+                            <ul style="margin-top: 1rem; padding-left: 1.5rem;">
+                                <li style="margin-bottom: 0.5rem;">试验基地共建</li>
+                                <li style="margin-bottom: 0.5rem;">规模化生产设施建设</li>
+                                <li>市场渠道协同拓展</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="card">
+                            <div class="card-header">
+                                <i class="fas fa-leaf card-icon"></i>
+                                <h3 class="card-title">可持续发展合作</h3>
+                            </div>
+                            <p>与关注可持续农业、气候韧性的组织合作，推广资源高效型咖啡生产方式。</p>
+                            <ul style="margin-top: 1rem; padding-left: 1.5rem;">
+                                <li style="margin-bottom: 0.5rem;">碳足迹认证与交易</li>
+                                <li style="margin-bottom: 0.5rem;">水资源节约认证</li>
+                                <li>可持续咖啡标准制定</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- 修改点2：新增宏胜集团合作分析 -->
+                <section class="section">
+                    <h2 class="section-title">战略合作伙伴案例分析：宏胜集团</h2>
+                    <div class="card">
+                        <div class="card-header">
+                            <i class="fas fa-handshake card-icon"></i>
+                            <h3 class="card-title">全产业链技术合作：<span class="highlight-text">创新组培技术</span> + 雾培咖啡种植系统</h3>
+                        </div>
+                        
+                        <div class="partner-highlight">
+                            <h4 style="color: var(--x-light); margin-bottom: 0.5rem;">合作技术基础</h4>
+                            <p>SHINAE SEEDs™提供完整的<span class="highlight-text">创新植物组织培养技术</span>与雾化水培咖啡种植系统，宏胜集团整合其饮料产业链资源，共同打造从种苗到杯子的全产业链闭环。</p>
+                        </div>
+                        
+                        <h4 style="color: var(--x-light); margin-top: 1.5rem; margin-bottom: 1rem;">对宏胜集团的战略优势</h4>
+                        <ul class="advantage-list">
+                            <li><strong>供应链自主可控：</strong>摆脱对进口咖啡豆和国际市场价格波动的依赖，建立稳定、高品质的自主咖啡供应链。</li>
+                            <li><strong>产品差异化与升级：</strong>通过"编程化"生产的特色风味咖啡豆，开发高端产品线，提升品牌溢价能力。</li>
+                            <li><strong>可持续发展领导力：</strong>采用节水95%、接近零农药的技术，大幅提升企业的ESG表现，契合可持续发展趋势。</li>
+                            <li><strong" class="highlight-text">创新技术壁垒：</strong>获得独家或优先的<span class="highlight-text">创新组培</span>与雾培技术授权，在咖啡原料领域建立技术护城河。</li>
+                            <li><strong>快速市场响应：</strong>都市化种植缩短产地到工厂距离，可根据市场需求快速调整生产品种与规模。</li>
+                            <li><strong>产业链延伸：</strong>从饮料制造向上游高附加值农业科技延伸，完善产业生态布局。</li>
+                        </ul>
+                        
+                        <h4 style="color: var(--x-light); margin-top: 1.5rem; margin-bottom: 1rem;">合作商业模式</h4>
+                        <div class="data-grid">
+                            <div class="data-item">
+                                <div class="data-value">模式一</div>
+                                <div class="data-label">技术授权与联合研发</div>
+                                <p style="margin-top: 0.5rem; font-size: 0.9rem;">宏胜获得技术授权，双方共建研发中心，持续优化咖啡种植技术。</p>
+                            </div>
+                            <div class="data-item">
+                                <div class="data-value">模式二</div>
+                                <div class="data-label">合资共建种植基地</div>
+                                <p style="margin-top: 0.5rem; font-size: 0.9rem;">双方合资在消费市场附近建设雾培咖啡种植基地，实现本地化生产。</p>
+                            </div>
+                            <div class="data-item">
+                                <div class="data-value">模式三</div>
+                                <div class="data-label">品牌联名与产品定制</div>
+                                <p style="margin-top: 0.5rem; font-size: 0.9rem;">开发"宏胜×SHINAE SEEDs™"联名高端咖啡产品线，共享品牌溢价。</p>
+                            </div>
+                            <div class="data-item">
+                                <div class="data-value">模式四</div>
+                                <div class="data-label">全产业链整合</div>
+                                <p style="margin-top: 0.5rem; font-size: 0.9rem;">从种苗、种植、加工到品牌营销的全链条深度合作。</p>
+                            </div>
+                        </div>
+                        
+                        <div style="margin-top: 1.5rem; padding: 1rem; background-color: rgba(255, 107, 107, 0.1); border-radius: 8px; border-left: 3px solid var(--highlight);">
+                            <h4 style="color: var(--highlight); margin-bottom: 0.5rem;">合作价值总结</h4>
+                            <p>通过整合SHINAE SEEDs™的<span class="highlight-text">创新组培技术</span>与雾培系统，宏胜集团可望：<br>
+                            1. 将咖啡原料成本波动降低30%以上，提升供应链稳定性<br>
+                            2. 开发毛利率提升15-20%的高端产品线<br>
+                            3. 在3-5年内建立自主可控的咖啡原料供应体系<br>
+                            4. 成为饮料行业农业科技整合的先行者，塑造创新品牌形象</p>
+                        </div>
+                    </div>
+                </section>
+                
+                <section class="section">
                     <h2 class="section-title">保持联系</h2>
-                    <p style="color: var(--x-gray); margin-bottom: 1.5rem;">无论您是对我们的技术感兴趣，希望探讨合作可能，还是想了解更多信息，我们都非常欢迎您通过以下方式与我们取得联系。</p>
+                    <p style="color: var(--x-gray); margin-bottom: 1.5rem;">我们期待与像宏胜集团这样的行业领导者探讨全产业链技术合作，共同推动咖啡产业的科技革新。</p>
                     
                     <div class="contact-info">
                         <div class="contact-method">
@@ -1336,50 +1475,6 @@
                                 <div class="contact-value">erik.wong@jebi.space</div>
                                 <div class="contact-note">工作日24小时内回复</div>
                             </div>
-                        </div>
-                    </div>
-                </section>
-                
-                <section class="section">
-                    <h2 class="section-title">合作方向</h2>
-                    <div class="dashboard">
-                        <div class="card">
-                            <div class="card-header">
-                                <i class="fas fa-flask card-icon"></i>
-                                <h3 class="card-title">技术研发合作</h3>
-                            </div>
-                            <p>与科研机构、高校合作，深化组培与雾化水培技术的咖啡专用化研发。</p>
-                            <ul style="margin-top: 1rem; padding-left: 1.5rem;">
-                                <li style="margin-bottom: 0.5rem;">咖啡品种组培体系优化</li>
-                                <li style="margin-bottom: 0.5rem;">雾化水培营养液配方研发</li>
-                                <li>生长环境"编程"算法开发</li>
-                            </ul>
-                        </div>
-                        
-                        <div class="card">
-                            <div class="card-header">
-                                <i class="fas fa-industry card-icon"></i>
-                                <h3 class="card-title">产业化合作</h3>
-                            </div>
-                            <p>与产业资本、咖啡企业合作，推动技术从试验到规模化生产的转化。</p>
-                            <ul style="margin-top: 1rem; padding-left: 1.5rem;">
-                                <li style="margin-bottom: 0.5rem;">试验基地共建</li>
-                                <li style="margin-bottom: 0.5rem;">规模化生产设施建设</li>
-                                <li>市场渠道协同拓展</li>
-                            </ul>
-                        </div>
-                        
-                        <div class="card">
-                            <div class="card-header">
-                                <i class="fas fa-leaf card-icon"></i>
-                                <h3 class="card-title">可持续发展合作</h3>
-                            </div>
-                            <p>与关注可持续农业、气候韧性的组织合作，推广资源高效型咖啡生产方式。</p>
-                            <ul style="margin-top: 1rem; padding-left: 1.5rem;">
-                                <li style="margin-bottom: 0.5rem;">碳足迹认证与交易</li>
-                                <li style="margin-bottom: 0.5rem;">水资源节约认证</li>
-                                <li>可持续咖啡标准制定</li>
-                            </ul>
                         </div>
                     </div>
                 </section>
