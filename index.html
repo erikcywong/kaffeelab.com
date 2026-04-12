@@ -25,6 +25,7 @@
             --x-accent: #1d9bf0;
             --x-hover: #0c4a6e;
             --highlight: #ff6b6b;
+            --cell-culture: #ec489a;
         }
         
         * {
@@ -170,7 +171,7 @@
             opacity: 1;
         }
         
-        /* 仪表板样式 (来自第一个文件) */
+        /* 仪表板样式 */
         .dashboard-container {
             max-width: 1400px;
             margin: 0 auto;
@@ -259,6 +260,11 @@
         
         .future-tech {
             color: var(--future-tech);
+            font-weight: 700;
+        }
+        
+        .cell-culture {
+            color: var(--cell-culture);
             font-weight: 700;
         }
         
@@ -493,15 +499,6 @@
             color: #ef4444;
         }
         
-        .dashboard-footer {
-            text-align: center;
-            margin-top: 3rem;
-            padding-top: 2rem;
-            border-top: 1px solid var(--border-color);
-            color: var(--text-gray);
-            font-size: 0.9rem;
-        }
-        
         /* 成本优势表格样式 */
         .cost-comparison-table {
             width: 100%;
@@ -622,7 +619,7 @@
             font-size: 1.1rem;
         }
         
-        /* 新增：成本优势指标展示 */
+        /* 成本优势指标展示 */
         .cost-metrics {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -874,6 +871,49 @@
             font-weight: bold;
         }
         
+        /* 组培咖啡技术专门样式 */
+        .tech-comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .tech-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+        
+        .tech-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--cell-culture);
+        }
+        
+        .tech-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--cell-culture), #be185d);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.2rem;
+            color: white;
+            font-size: 1.8rem;
+        }
+        
+        .comparison-highlight {
+            background-color: rgba(236, 72, 153, 0.1);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-left: 4px solid var(--cell-culture);
+        }
+        
         /* 响应式设计 */
         @media (max-width: 768px) {
             .dashboard-grid {
@@ -933,6 +973,10 @@
             .cost-metrics {
                 grid-template-columns: 1fr;
             }
+            
+            .tech-comparison-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -971,6 +1015,9 @@
                         <li><a onclick="showPageAndScroll('evolution', 'impact')">行业影响</a></li>
                         <li><a onclick="showPageAndScroll('evolution', 'strategy')">行动战略</a></li>
                     </ul>
+                </li>
+                <li class="nav-item">
+                    <div class="nav-link" onclick="showPage('cellCulture')">组培咖啡技术</div>
                 </li>
                 <li class="nav-item">
                     <div class="nav-link" onclick="showPage('dashboard')">投资仪表板</div>
@@ -1092,7 +1139,7 @@
                     </div>
                 </section>
                 
-                <!-- 新增：成本优势概览 -->
+                <!-- 成本优势概览 -->
                 <section class="section">
                     <h2 class="section-title">成本优势概览</h2>
                     <div class="card">
@@ -1212,7 +1259,268 @@
             </div>
         </div>
         
-        <!-- 投资仪表板页面 (来自第一个文件) -->
+        <!-- 新增：组培咖啡技术页面 -->
+        <div id="cellCulture" class="page">
+            <div class="container">
+                <section class="hero">
+                    <h1><span class="cell-culture">组培咖啡技术</span></h1>
+                    <p class="hero-subtitle">
+                        细胞培养咖啡(Cell-Cultured Coffee)——<span class="cell-culture">不依赖土地的咖啡生产方式</span>，实验室直接培育的咖啡产品
+                    </p>
+                </section>
+                
+                <section class="section">
+                    <h2 class="section-title">什么是组培咖啡技术？</h2>
+                    <div class="dashboard-grid">
+                        <div class="dashboard-card">
+                            <div class="card-header">
+                                <div class="card-icon" style="background-color: rgba(236, 72, 153, 0.1); color: var(--cell-culture);">
+                                    <i class="fas fa-flask"></i>
+                                </div>
+                                <div>
+                                    <div class="card-title">细胞培养咖啡</div>
+                                    <div class="card-subtitle">实验室培育的未来咖啡</div>
+                                </div>
+                            </div>
+                            <p>组培咖啡技术（Cell-Cultured Coffee）是一种前沿的生物技术，通过在生物反应器中培养咖啡植物的细胞，直接生产咖啡产品，<strong>完全不依赖土地、气候和传统种植周期</strong>。</p>
+                            <div class="data-grid" style="margin-top: 1rem;">
+                                <div class="data-item">
+                                    <div class="data-value">以周/月计</div>
+                                    <div class="data-label">生产周期</div>
+                                </div>
+                                <div class="data-item">
+                                    <div class="data-value">94%</div>
+                                    <div class="data-label">节水效率</div>
+                                </div>
+                                <div class="data-item">
+                                    <div class="data-value">零耕地</div>
+                                    <div class="data-label">土地依赖</div>
+                                </div>
+                                <div class="data-item">
+                                    <div class="data-value">100%</div>
+                                    <div class="data-label">风味可控性</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="dashboard-card">
+                            <div class="card-header">
+                                <div class="card-icon" style="background-color: rgba(236, 72, 153, 0.1); color: var(--cell-culture);">
+                                    <i class="fas fa-chart-line"></i>
+                                </div>
+                                <div>
+                                    <div class="card-title">市场前景</div>
+                                    <div class="card-subtitle">高速增长的蓝海市场</div>
+                                </div>
+                            </div>
+                            <div class="data-grid">
+                                <div class="data-item">
+                                    <div class="data-value">$12.3M</div>
+                                    <div class="data-label">2024年市场规模</div>
+                                </div>
+                                <div class="data-item">
+                                    <div class="data-value">$150M+</div>
+                                    <div class="data-label">2034年市场规模</div>
+                                </div>
+                                <div class="data-item">
+                                    <div class="data-value">28%+</div>
+                                    <div class="data-label">年复合增长率</div>
+                                </div>
+                                <div class="data-item">
+                                    <div class="data-value">商业化前夜</div>
+                                    <div class="data-label">发展阶段</div>
+                                </div>
+                            </div>
+                            <div style="margin-top: 1rem; padding: 0.8rem; background-color: rgba(236, 72, 153, 0.1); border-radius: 8px;">
+                                <p><strong>市场驱动力：</strong>年轻消费者对<span class="cell-culture">"可持续、零毁林、可追溯"</span>咖啡的强劲需求，推动细胞培养咖啡市场快速增长。</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <section class="section">
+                    <h2 class="section-title">创新组培 vs 细胞培养咖啡</h2>
+                    <div class="card">
+                        <table class="comparison-table">
+                            <thead>
+                                <tr>
+                                    <th width="30%">对比维度</th>
+                                    <th width="35%"><span class="highlight">创新组培</span>（种苗快繁）</th>
+                                    <th width="35%"><span class="cell-culture">细胞培养咖啡</span>（产品生产）</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>核心目标</strong></td>
+                                    <td class="tech-cell">快速、大量克隆生产性状一致、无病害的优质咖啡苗</td>
+                                    <td style="background-color: rgba(236, 72, 153, 0.1); color: var(--cell-culture);">不依赖土地和气候，在生物反应器中直接生产咖啡产品</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>应用阶段</strong></td>
+                                    <td class="tech-cell">技术成熟，处于产业化应用前期</td>
+                                    <td style="background-color: rgba(236, 72, 153, 0.1); color: var(--cell-culture);">已完成概念验证，处于商业化的前夜</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>生产周期</strong></td>
+                                    <td class="tech-cell">6-8个月成苗</td>
+                                    <td style="background-color: rgba(236, 72, 153, 0.1); color: var(--cell-culture);">以周、月计，极短生产周期</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>资源需求</strong></td>
+                                    <td class="tech-cell">需要温室/工厂空间</td>
+                                    <td style="background-color: rgba(236, 72, 153, 0.1); color: var(--cell-culture);">不依赖耕地，节水94%以上</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>产出形式</strong></td>
+                                    <td class="tech-cell">活体植物幼苗</td>
+                                    <td style="background-color: rgba(236, 72, 153, 0.1); color: var(--cell-culture);">可直接加工的咖啡原料/粉末</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>技术成熟度</strong></td>
+                                    <td class="tech-cell">TRL 7-8（系统演示）</td>
+                                    <td style="background-color: rgba(236, 72, 153, 0.1); color: var(--cell-culture);">TRL 5-6（技术验证）</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+                
+                <section class="section">
+                    <h2 class="section-title">技术路径对比与协同</h2>
+                    <div class="tech-comparison-grid">
+                        <div class="tech-card">
+                            <div class="tech-icon">
+                                <i class="fas fa-dna"></i>
+                            </div>
+                            <h4 style="color: var(--highlight); margin-bottom: 0.5rem;">创新组培技术</h4>
+                            <p style="color: var(--text-gray);">解决咖啡品种的"源头"问题</p>
+                            <ul style="margin-top: 1rem; text-align: left; padding-left: 1rem; color: var(--text-gray);">
+                                <li>✓ 性状100%一致</li>
+                                <li>✓ 完全脱毒</li>
+                                <li>✓ 可大规模供应优质种苗</li>
+                                <li>✓ 服务传统种植产业</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="tech-card">
+                            <div class="tech-icon">
+                                <i class="fas fa-plus-circle"></i>
+                            </div>
+                            <h4 style="color: var(--primary); margin-bottom: 0.5rem;">协同效应</h4>
+                            <p style="color: var(--text-gray);">1+1 > 2的乘法效应</p>
+                            <ul style="margin-top: 1rem; text-align: left; padding-left: 1rem; color: var(--text-gray);">
+                                <li>✓ 共享组培技术平台</li>
+                                <li>✓ 协同研发降低成本</li>
+                                <li>✓ 覆盖全产业链</li>
+                                <li>✓ 分散技术与市场风险</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="tech-card">
+                            <div class="tech-icon">
+                                <i class="fas fa-flask"></i>
+                            </div>
+                            <h4 style="color: var(--cell-culture); margin-bottom: 0.5rem;">细胞培养咖啡</h4>
+                            <p style="color: var(--text-gray);">直接生产咖啡产品的革命</p>
+                            <ul style="margin-top: 1rem; text-align: left; padding-left: 1rem; color: var(--text-gray);">
+                                <li>✓ 不依赖耕地</li>
+                                <li>✓ 生产周期极短</li>
+                                <li>✓ 风味可编程</li>
+                                <li>✓ 颠覆传统供应链</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="comparison-highlight">
+                        <h4 style="color: var(--cell-culture); margin-bottom: 0.75rem;">双轨技术路线的战略价值</h4>
+                        <p>SHINAE SEEDs™同时布局<span class="highlight">创新组培技术</span>（短期变现）与<span class="cell-culture">细胞培养咖啡</span>（长期增长），形成完美的技术组合：</p>
+                        <ul style="margin-top: 1rem; padding-left: 1.5rem;">
+                            <li style="margin-bottom: 0.5rem;"><strong>短期：</strong>通过创新组培技术快速占领优质种苗市场，建立现金流和品牌认知</li>
+                            <li style="margin-bottom: 0.5rem;"><strong>中期：</strong>积累的组培技术与经验可反哺细胞培养咖啡研发</li>
+                            <li style="margin-bottom: 0.5rem;"><strong>长期：</strong>当细胞培养咖啡商业化成熟时，成为最早进入市场的企业之一</li>
+                            <li><strong>风险对冲：</strong>两条技术路线分散研发和市场风险，确保企业持续竞争力</li>
+                        </ul>
+                    </div>
+                </section>
+                
+                <section class="section">
+                    <h2 class="section-title">细胞培养咖啡的商业模式潜力</h2>
+                    <div class="dashboard-grid">
+                        <div class="dashboard-card">
+                            <div class="card-header">
+                                <div class="card-icon" style="background-color: rgba(236, 72, 153, 0.1); color: var(--cell-culture);">
+                                    <i class="fas fa-industry"></i>
+                                </div>
+                                <div>
+                                    <div class="card-title">直接咖啡产品生产</div>
+                                    <div class="card-subtitle">跳过传统种植环节</div>
+                                </div>
+                            </div>
+                            <p>细胞培养咖啡可以在生物反应器中直接生产咖啡原料，完全绕过土地、种植、采摘、加工等传统环节。</p>
+                            <div class="data-grid" style="margin-top: 1rem;">
+                                <div class="data-item">
+                                    <div class="data-value">城市工厂</div>
+                                    <div class="data-label">生产地点</div>
+                                </div>
+                                <div class="data-item">
+                                    <div class="data-value">本地供应</div>
+                                    <div class="data-label">供应链模式</div>
+                                </div>
+                                <div class="data-item">
+                                    <div class="data-value">碳排放归零</div>
+                                    <div class="data-label">物流碳足迹</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="dashboard-card">
+                            <div class="card-header">
+                                <div class="card-icon" style="background-color: rgba(236, 72, 153, 0.1); color: var(--cell-culture);">
+                                    <i class="fas fa-crown"></i>
+                                </div>
+                                <div>
+                                    <div class="card-title">品牌溢价与ESG价值</div>
+                                    <div class="card-subtitle">可持续发展领导力</div>
+                                </div>
+                            </div>
+                            <p>细胞培养咖啡天然具备"零毁林"、"节水94%"、"无农药"等可持续属性，可支撑高端品牌定位。</p>
+                            <div style="margin-top: 1rem; padding: 0.8rem; background-color: rgba(236, 72, 153, 0.1); border-radius: 8px;">
+                                <p><strong>目标市场：</strong>高端精品咖啡市场、注重ESG的品牌客户、未来食品研发平台。</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <section class="section">
+                    <h2 class="section-title">SHINAE SEEDs™的技术路线图</h2>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-year">当前阶段</div>
+                            <div class="timeline-content">
+                                <p><strong>创新组培技术产业化</strong> - 咖啡脱毒苗商业化生产</p>
+                                <p>细胞培养咖啡实验室研究 - 基础技术验证与专利布局</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-year">1-2年</div>
+                            <div class="timeline-content">
+                                <p><strong>细胞培养咖啡中试</strong> - 建立小型生物反应器生产线</p>
+                                <p>完成风味验证与产品开发</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-year">3-5年</div>
+                            <div class="timeline-content">
+                                <p><strong>细胞培养咖啡商业化</strong> - 规模化生产与市场推广</p>
+                                <p>建立"组培种苗+细胞培养咖啡"双轮驱动模式</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+        
+        <!-- 投资仪表板页面 -->
         <div id="dashboard" class="page">
             <div class="dashboard-container">
                 <div class="dashboard-header">
@@ -1327,7 +1635,7 @@
                     </div>
                 </div>
                 
-                <!-- 新增：成本优势详细分析 -->
+                <!-- 成本优势详细分析 -->
                 <div class="dashboard-grid">
                     <div class="dashboard-card">
                         <div class="card-header">
@@ -1461,7 +1769,7 @@
                     </div>
                 </div>
                 
-                <!-- 新增：颠覆性商业模式影响 -->
+                <!-- 颠覆性商业模式影响 -->
                 <div class="dashboard-header" style="margin-top: 3rem;">
                     <h2>成本优势带来的颠覆性商业模式影响</h2>
                     <p>基于极致的成本与效率优势，我们能够重新定义咖啡产业链的游戏规则</p>
@@ -1546,7 +1854,7 @@
                         <p class="impact-desc">技术可复制性强，能够快速复制到全球主要咖啡产区。</p>
                         <ul class="impact-list">
                             <li><strong>技术可复制性：</strong>标准化生产流程，易于全球复制</li>
-                            <li><strong">本地化生产优势：</strong>在当地建立生产基地，减少国际运输</li>
+                            <li><strong>本地化生产优势：</strong>在当地建立生产基地，减少国际运输</li>
                             <li><strong>气候风险对冲：</strong>在多个地区建立生产基地，对冲气候风险</li>
                             <li><strong>全球标准输出：</strong>将中国的农业科技标准输出到全球</li>
                         </ul>
@@ -1681,7 +1989,7 @@
                             </div>
                             <div>
                                 <div class="card-title">技术路径对比</div>
-                                <div class="card-subtitle">传统组培 vs 细胞培养咖啡</div>
+                                <div class="card-subtitle">创新组培 vs 细胞培养咖啡</div>
                             </div>
                         </div>
                         
@@ -1806,7 +2114,7 @@
                     </div>
                 </div>
                 
-                <!-- 新增：市场影响分析 -->
+                <!-- 市场影响分析 -->
                 <div class="market-impact">
                     <h3 class="market-impact-title">对云南咖啡产业的系统性影响</h3>
                     <p>基于我们的成本优势与产能潜力，预计将对云南咖啡产业产生以下系统性影响：</p>
@@ -1828,7 +2136,6 @@
                         <p><strong>核心结论：</strong>我们的技术不仅提供了成本优势，更重要的是创造了<strong>时间优势</strong>和<strong>空间效率优势</strong>。生产周期缩短50%意味着资金周转率翻倍，100平米年产1000万棵的产能意味着我们可以在城市周边建立生产基地，重构整个咖啡供应链的地理布局。这些优势叠加，创造了传统种植方式无法企及的竞争壁垒。</p>
                     </div>
                 </div>
-                
             </div>
         </div>
         
@@ -2658,30 +2965,26 @@
     <script>
         // 页面切换功能
         let currentPage = 'home';
-        const pages = ['home', 'migration', 'aeroponics', 'evolution', 'dashboard', 'contact'];
+        const pages = ['home', 'migration', 'aeroponics', 'evolution', 'cellCulture', 'dashboard', 'contact'];
         
         // 显示页面并滚动到特定锚点
         function showPageAndScroll(pageId, anchorId) {
             showPage(pageId);
             
-            // 延迟执行滚动，确保页面已加载
             setTimeout(() => {
                 const anchorElement = document.getElementById(anchorId);
                 if (anchorElement) {
-                    // 计算滚动位置（考虑固定导航栏高度）
                     const offsetTop = anchorElement.offsetTop - 100;
-                    
                     window.scrollTo({
                         top: offsetTop,
                         behavior: 'smooth'
                     });
                 }
-            }, 300); // 等待页面切换动画完成
+            }, 300);
         }
         
         // 显示页面
         function showPage(pageId) {
-            // 隐藏当前页面
             const currentPageElement = document.getElementById(currentPage);
             if (currentPageElement) {
                 currentPageElement.classList.remove('active');
@@ -2690,11 +2993,9 @@
                 }, 10);
             }
             
-            // 更新导航栏激活状态
             document.querySelectorAll('.nav-link.active').forEach(el => el.classList.remove('active'));
             document.querySelectorAll('.dropdown-menu a.active').forEach(el => el.classList.remove('active'));
             
-            // 显示新页面
             const newPageElement = document.getElementById(pageId);
             if (newPageElement) {
                 newPageElement.classList.add('active');
@@ -2703,75 +3004,56 @@
                 }, 50);
             }
             
-            // 更新导航链接激活状态
             const navLink = document.querySelector(`.nav-link[onclick="showPage('${pageId}')"]`);
             if (navLink) navLink.classList.add('active');
             
-            // 更新当前页面
             currentPage = pageId;
-            
-            // 更新URL（不刷新页面）
             history.pushState({page: pageId}, '', `#${pageId}`);
-            
-            // 滚动到顶部
             window.scrollTo(0, 0);
         }
         
         // 初始化页面
         document.addEventListener('DOMContentLoaded', function() {
-            // 检查URL中的hash，如果有则跳转到对应页面
             const hash = window.location.hash.substring(1);
             if (hash && pages.includes(hash)) {
                 showPage(hash);
             } else {
-                // 默认显示主页，并更新URL
                 history.replaceState({page: 'home'}, '', '#home');
             }
             
-            // 监听浏览器前进后退按钮
             window.addEventListener('popstate', function(event) {
                 if (event.state && event.state.page) {
                     showPage(event.state.page);
                 }
             });
             
-            // 数据卡片悬停效果增强
-            const cards = document.querySelectorAll('.card, .model-card, .dashboard-card, .impact-card');
+            const cards = document.querySelectorAll('.card, .model-card, .dashboard-card, .impact-card, .tech-card');
             cards.forEach(card => {
                 card.addEventListener('mouseenter', function() {
                     this.style.boxShadow = '0 10px 25px rgba(29, 155, 240, 0.15)';
                 });
-                
                 card.addEventListener('mouseleave', function() {
                     this.style.boxShadow = 'none';
                 });
             });
             
-            // 悬停下拉菜单功能
             const navItems = document.querySelectorAll('.nav-item');
             navItems.forEach(item => {
                 item.addEventListener('mouseenter', function() {
                     const dropdown = this.querySelector('.dropdown-menu');
-                    if(dropdown) {
-                        dropdown.style.display = 'block';
-                    }
+                    if(dropdown) dropdown.style.display = 'block';
                 });
-                
                 item.addEventListener('mouseleave', function() {
                     const dropdown = this.querySelector('.dropdown-menu');
-                    if(dropdown) {
-                        dropdown.style.display = 'none';
-                    }
+                    if(dropdown) dropdown.style.display = 'none';
                 });
             });
             
-            // 联系卡片悬停效果
             const contactMethods = document.querySelectorAll('.contact-method');
             contactMethods.forEach(method => {
                 method.addEventListener('mouseenter', function() {
                     this.style.transform = 'translateY(-3px)';
                 });
-                
                 method.addEventListener('mouseleave', function() {
                     this.style.transform = 'translateY(0)';
                 });
